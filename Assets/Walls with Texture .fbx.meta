@@ -16,7 +16,12 @@ ModelImporter:
     3300002: Wall_One
     4300000: Wall_One
     4300002: Wall2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_test
+    second: {fileID: 2100000, guid: e3b997f95d25de54d8b3e911e65d0f47, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
