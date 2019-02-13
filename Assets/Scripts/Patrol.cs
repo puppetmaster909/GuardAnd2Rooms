@@ -113,4 +113,9 @@ public class Patrol : MonoBehaviour
         }
     }
 
+    public void Search(Transform target)
+    {
+        //navMeshAgent.SetDestination();
+    }
+
 }

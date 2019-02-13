@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    Vector3 moveDirection;
 
     private Rigidbody rb;
 
@@ -13,13 +14,24 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        moveDirection = (moveHorizontal * transform.right + moveVertical * transform.forward).normalized;
+        //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        rb.AddForce(movement * speed);
+        //rb.AddForce(moveDirection * speed);
+    }
+
+    void FixedUpdate()
+    {
+        Move();
+    }
+
+    void Move()
+    {
+        rb.velocity = moveDirection * speed * Time.deltaTime;
     }
 }
