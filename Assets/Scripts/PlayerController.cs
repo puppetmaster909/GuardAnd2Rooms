@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public float speed;
     Vector3 moveDirection;
 
+    Transform[] guards;
+
     private Rigidbody rb;
 
     void Start()
@@ -20,9 +22,19 @@ public class PlayerController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         moveDirection = (moveHorizontal * transform.right + moveVertical * transform.forward).normalized;
-        //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        //rb.AddForce(moveDirection * speed);
+        if (Input.GetKeyDown("b"))
+        {
+            Bark();
+        }
+    }
+
+    void Bark()
+    {
+        foreach(Transform tr in guards)
+        {
+
+        }
     }
 
     void FixedUpdate()
