@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     public float speed;
     Vector3 moveDirection;
 
-    Transform[] guards;
+    Collider[] colliders;
+    //List<GameObject> guardsInSphere = new List<GameObject>();
 
     private Rigidbody rb;
 
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
         moveDirection = (moveHorizontal * transform.right + moveVertical * transform.forward).normalized;
 
-        if (Input.GetKeyDown("b"))
+        if (Input.GetKeyDown("space"))
         {
             Bark();
         }
@@ -31,9 +32,15 @@ public class PlayerController : MonoBehaviour
 
     void Bark()
     {
-        foreach(Transform tr in guards)
-        {
+        colliders = Physics.OverlapSphere(gameObject.transform.position, 100.0f);
 
+        foreach(Collider obj in colliders)
+        {
+            if (obj.name.Contains("Guard"))
+            {
+                GameObject currentObj = obj.gameObject;
+                currentObj.GetComponent<GuardAI>().SetSearch(gameObject.transform);
+            }
         }
     }
 
