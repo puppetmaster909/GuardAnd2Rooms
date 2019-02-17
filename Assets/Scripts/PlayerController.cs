@@ -4,27 +4,36 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
+    public float speed = 10;
     Vector3 moveDirection;
 
     Collider[] colliders;
-    //List<GameObject> guardsInSphere = new List<GameObject>();
 
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
 
-        moveDirection = (moveHorizontal * transform.right + moveVertical * transform.forward).normalized;
+        float translation = Input.GetAxis("Vertical") * speed;
+        float straffe = Input.GetAxis("Horizontal") * speed;
+        translation *= Time.deltaTime;
+        straffe *= Time.deltaTime;
 
-        if (Input.GetKeyDown("space"))
+        transform.Translate(straffe, 0, translation);
+
+        if (Input.GetKeyDown("escape"))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Application.Quit();
+        }
+
+        if (Input.GetKeyDown("space") || (Input.GetKeyDown("joystick button 0")))
         {
             Bark();
         }
@@ -44,13 +53,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        Move();
-    }
-
-    void Move()
-    {
-        rb.velocity = moveDirection * speed * Time.deltaTime;
-    }
 }

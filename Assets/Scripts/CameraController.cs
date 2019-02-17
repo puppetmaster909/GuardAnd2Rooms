@@ -6,29 +6,31 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
 
-    private Vector3 offset;
+    public float minY;
+    public float maxY;
 
-    public float speedH = 2.0f;
-    public float speedV = 2.0f;
-
-    //private float yaw = 0.0f;
-    //private float pitch = 0.0f;
+    Vector2 mouseLook;
+    Vector2 smoothV;
+    public float sensitivity = 5.0f;
+    public float smoothing = 2.0f;
 
     void Start()
     {
-        offset = transform.position - player.transform.position;
+        
     }
 
     void LateUpdate()
     {
-        transform.position = player.transform.position + offset;
+        var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-       /* yaw += speedH * Input.GetAxis("Mouse X");
-        pitch -= speedV * Input.GetAxis("Mouse Y");
+        md = Vector2.Scale(md, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+        smoothV.x = Mathf.Lerp(smoothV.x, md.x, 1f / smoothing);
+        smoothV.y = Mathf.Lerp(smoothV.y, md.y, 1f / smoothing);
+        mouseLook += smoothV;
+        mouseLook.y = Mathf.Clamp(mouseLook.y, minY, maxY);
 
-        transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
-        */
-
+        transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
+        player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, player.transform.up);
         
     }
 }
