@@ -29,6 +29,7 @@ public class GuardAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("TEST");
         navMeshAgent = this.GetComponent<NavMeshAgent>();
         
         if (navMeshAgent == null)
