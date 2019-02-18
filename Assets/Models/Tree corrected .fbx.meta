@@ -491,7 +491,12 @@ ModelImporter:
     4300178: pPlane90
     4300180: pPlane91
     4300182: pPlane92
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert5
+    second: {fileID: 2100000, guid: 9e97a6f75189b8547a4bcb1ae3fc71d7, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

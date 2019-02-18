@@ -335,8 +335,98 @@ ModelImporter:
     4300124: pSphere64
     4300126: pSphere65
     4300128: pSphere66
+    6400000: pCylinder1
+    6400002: pSphere10
+    6400004: pSphere11
+    6400006: pSphere12
+    6400008: pSphere13
+    6400010: pSphere14
+    6400012: pSphere15
+    6400014: pSphere16
+    6400016: pSphere17
+    6400018: pSphere18
+    6400020: pSphere19
+    6400022: pSphere2
+    6400024: pSphere20
+    6400026: pSphere21
+    6400028: pSphere22
+    6400030: pSphere23
+    6400032: pSphere24
+    6400034: pSphere25
+    6400036: pSphere26
+    6400038: pSphere27
+    6400040: pSphere28
+    6400042: pSphere29
+    6400044: pSphere30
+    6400046: pSphere31
+    6400048: pSphere32
+    6400050: pSphere33
+    6400052: pSphere34
+    6400054: pSphere35
+    6400056: pSphere36
+    6400058: pSphere37
+    6400060: pSphere38
+    6400062: pSphere39
+    6400064: pSphere4
+    6400066: pSphere40
+    6400068: pSphere41
+    6400070: pSphere42
+    6400072: pSphere43
+    6400074: pSphere44
+    6400076: pSphere45
+    6400078: pSphere46
+    6400080: pSphere47
+    6400082: pSphere48
+    6400084: pSphere49
+    6400086: pSphere5
+    6400088: pSphere50
+    6400090: pSphere51
+    6400092: pSphere52
+    6400094: pSphere53
+    6400096: pSphere54
+    6400098: pSphere55
+    6400100: pSphere56
+    6400102: pSphere57
+    6400104: pSphere58
+    6400106: pSphere59
+    6400108: pSphere6
+    6400110: pSphere60
+    6400112: pSphere61
+    6400114: pSphere62
+    6400116: pSphere63
+    6400118: pSphere64
+    6400120: pSphere65
+    6400122: pSphere66
+    6400124: pSphere7
+    6400126: pSphere8
+    6400128: pSphere9
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: e3b997f95d25de54d8b3e911e65d0f47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: e3b997f95d25de54d8b3e911e65d0f47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: e3b997f95d25de54d8b3e911e65d0f47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert5
+    second: {fileID: 2100000, guid: e3b997f95d25de54d8b3e911e65d0f47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert8
+    second: {fileID: 2100000, guid: e3b997f95d25de54d8b3e911e65d0f47, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -369,7 +459,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
