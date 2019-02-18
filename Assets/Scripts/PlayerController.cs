@@ -11,9 +11,12 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    private AudioSource playerSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -25,11 +28,6 @@ public class PlayerController : MonoBehaviour
         straffe *= Time.deltaTime;
 
         transform.Translate(straffe, 0, translation);
-
-        if (Input.GetKeyDown("t"))
-        {
-            UIManager.instance.ShowScreen("WinScreen");
-        }
 
         if (Input.GetKeyDown("escape") || (Input.GetKeyDown("joystick button 7")))
         {
@@ -44,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     void Bark()
     {
+        playerSource.Play();
         colliders = Physics.OverlapSphere(gameObject.transform.position, 100.0f);
 
         foreach (Collider obj in colliders)

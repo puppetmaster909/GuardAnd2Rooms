@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         CameraController.instance.menuUp = true;
         Time.timeScale = 0;
+        BGMController.instance.BGM.Pause();
 
         for (int i = 0; i < screens.Count; i++)
         {
@@ -72,6 +73,7 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         CameraController.instance.menuUp = false;
         screens[curScreen].screen.SetActive(false);
+        BGMController.instance.BGM.Play();
     }
 
     // Start is called before the first frame update
