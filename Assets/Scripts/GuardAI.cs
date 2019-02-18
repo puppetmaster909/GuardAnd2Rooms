@@ -16,7 +16,10 @@ public class GuardAI : MonoBehaviour
     public bool patrolWaiting;
     public float totalWaitTime = 3f;
     public float switchProbability = 0.2f;
+    public float deathDistance;
+    public bool playerInSight = false;
 
+    private float chaseTimer = 0.0f;
     private int currentPatrolIndex;
     private float waitTimer;
     private float searchTimer;
@@ -43,7 +46,13 @@ public class GuardAI : MonoBehaviour
                 SetDestination();
             }
         }
+        
+    }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, deathDistance);
     }
 
     // Sets the next distination from the patrol points list
@@ -134,13 +143,41 @@ public class GuardAI : MonoBehaviour
                 searchTimer += Time.deltaTime;
                 if (searchTimer >= 5.0f)
                 {
-                    Debug.Log("SearchTimer Over");
                     currentState = "Patrol";
                     searchTimer = 0.0f;
                     targetSet = false;
                 }
             }
         }
+    }
+
+    public void SetChase(Transform playerPos)
+    {
+        currentState = "Chase";
+        targetLocation = playerPos.position;
+    }
+
+    public void Chase()
+    {
+        transform.LookAt(targetLocation);
+        navMeshAgent.SetDestination(targetLocation);
+
+        if (!playerInSight)
+        {
+            //Debug.Log("Player not in sight");
+            chaseTimer += Time.deltaTime;
+            Debug.Log(chaseTimer);
+            if (chaseTimer >= 2.0f)
+            {
+                currentState = "Patrol";
+                chaseTimer = 0.0f;
+            }
+        }
+    }
+
+    public void SetPatrol()
+    {
+        currentState = "Patrol";
     }
 
     // Update is called once per frame
@@ -154,6 +191,15 @@ public class GuardAI : MonoBehaviour
         } else if (currentState.Equals("Search"))
         {
             Search();      
+        } else if (currentState.Equals("Chase"))
+        {
+            Chase();
+
+            if (navMeshAgent.remainingDistance <= deathDistance)
+            {
+                Debug.Log("DEAD");
+                navMeshAgent.speed = 0;
+            }
         }
     }
 }

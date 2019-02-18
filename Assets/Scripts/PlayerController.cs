@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         colliders = Physics.OverlapSphere(gameObject.transform.position, 100.0f);
 
-        foreach(Collider obj in colliders)
+        foreach (Collider obj in colliders)
         {
             if (obj.name.Contains("Guard"))
             {
