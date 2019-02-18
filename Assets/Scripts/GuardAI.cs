@@ -28,6 +28,7 @@ public class GuardAI : MonoBehaviour
     private bool patrolForward;
     private bool targetSet = false;
     private string currentState = "Patrol";
+    private bool hasDied;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,7 @@ public class GuardAI : MonoBehaviour
                 SetDestination();
             }
         }
-        
+        hasDied = false;
     }
 
     private void OnDrawGizmosSelected()
@@ -164,9 +165,7 @@ public class GuardAI : MonoBehaviour
 
         if (!playerInSight)
         {
-            //Debug.Log("Player not in sight");
             chaseTimer += Time.deltaTime;
-            Debug.Log(chaseTimer);
             if (chaseTimer >= 2.0f)
             {
                 currentState = "Patrol";
@@ -197,8 +196,11 @@ public class GuardAI : MonoBehaviour
 
             if (navMeshAgent.remainingDistance <= deathDistance)
             {
-                Debug.Log("DEAD");
-                navMeshAgent.speed = 0;
+                if (!hasDied)
+                {
+                    UIManager.instance.ShowScreen("DeathScreen");
+                    hasDied = true;
+                }
             }
         }
     }

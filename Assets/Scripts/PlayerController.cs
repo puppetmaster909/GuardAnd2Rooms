@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -27,10 +26,14 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(straffe, 0, translation);
 
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown("t"))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Application.Quit();
+            UIManager.instance.ShowScreen("WinScreen");
+        }
+
+        if (Input.GetKeyDown("escape") || (Input.GetKeyDown("joystick button 7")))
+        {
+            UIManager.instance.ShowScreen("PauseMenu");
         }
 
         if (Input.GetKeyDown("space") || (Input.GetKeyDown("joystick button 0")))
