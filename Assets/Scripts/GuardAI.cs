@@ -19,6 +19,11 @@ public class GuardAI : MonoBehaviour
     public float deathDistance;
     public bool playerInSight = false;
 
+    public AudioClip confused;
+    public AudioClip nothingFound;
+    public AudioClip foundPlayer;
+    private AudioSource source;
+
     private float chaseTimer = 0.0f;
     private int currentPatrolIndex;
     private float waitTimer;
@@ -29,10 +34,15 @@ public class GuardAI : MonoBehaviour
     private bool targetSet = false;
     private string currentState = "Patrol";
     private bool hasDied;
+    private bool soundPlayed = false;
+    private float soundTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
+        //StartCoroutine("PlaySoundRepeat");
+
         navMeshAgent = this.GetComponent<NavMeshAgent>();
         
         if (navMeshAgent == null)
@@ -127,6 +137,7 @@ public class GuardAI : MonoBehaviour
         currentState = "Search";
         if (!targetSet)
         {
+            source.PlayOneShot(confused);
             targetSet = true;
             targetLocation = target.position;
         }
@@ -144,6 +155,7 @@ public class GuardAI : MonoBehaviour
                 searchTimer += Time.deltaTime;
                 if (searchTimer >= 5.0f)
                 {
+                    source.PlayOneShot(nothingFound);
                     currentState = "Patrol";
                     searchTimer = 0.0f;
                     targetSet = false;
@@ -154,8 +166,15 @@ public class GuardAI : MonoBehaviour
 
     public void SetChase(Transform playerPos)
     {
+        if (!soundPlayed)
+        {
+            source.PlayOneShot(foundPlayer);
+            //StartCoroutine("PlaySoundRepeat");
+            soundPlayed = true;
+        }
         currentState = "Chase";
         targetLocation = playerPos.position;
+
     }
 
     public void Chase()
@@ -165,13 +184,18 @@ public class GuardAI : MonoBehaviour
 
         if (!playerInSight)
         {
+            //StopCoroutine("PlaySoundRepeat");
+            soundPlayed = false;
             chaseTimer += Time.deltaTime;
+            Debug.Log(chaseTimer);
             if (chaseTimer >= 2.0f)
             {
+                source.PlayOneShot(nothingFound);
                 currentState = "Patrol";
                 chaseTimer = 0.0f;
             }
         }
+        
     }
 
     public void SetPatrol()
@@ -187,14 +211,16 @@ public class GuardAI : MonoBehaviour
         {
             Patrol();
 
-        } else if (currentState.Equals("Search"))
+        }
+        else if (currentState.Equals("Search"))
         {
-            Search();      
-        } else if (currentState.Equals("Chase"))
+            Search();
+        }
+        else if (currentState.Equals("Chase"))
         {
             Chase();
 
-            if (navMeshAgent.remainingDistance <= deathDistance)
+            if (navMeshAgent.remainingDistance <= deathDistance && playerInSight)
             {
                 if (!hasDied)
                 {
@@ -203,5 +229,11 @@ public class GuardAI : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator PlaySoundRepeat()
+    {
+            source.PlayOneShot(foundPlayer);
+            yield return new WaitForSeconds(0.5f);
     }
 }
