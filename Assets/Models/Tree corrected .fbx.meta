@@ -491,6 +491,98 @@ ModelImporter:
     4300178: pPlane90
     4300180: pPlane91
     4300182: pPlane92
+    6400000: curve1
+    6400002: pPlane1
+    6400004: pPlane10
+    6400006: pPlane11
+    6400008: pPlane12
+    6400010: pPlane13
+    6400012: pPlane14
+    6400014: pPlane15
+    6400016: pPlane16
+    6400018: pPlane17
+    6400020: pPlane18
+    6400022: pPlane19
+    6400024: pPlane2
+    6400026: pPlane20
+    6400028: pPlane21
+    6400030: pPlane22
+    6400032: pPlane23
+    6400034: pPlane24
+    6400036: pPlane25
+    6400038: pPlane26
+    6400040: pPlane27
+    6400042: pPlane28
+    6400044: pPlane29
+    6400046: pPlane3
+    6400048: pPlane30
+    6400050: pPlane31
+    6400052: pPlane32
+    6400054: pPlane33
+    6400056: pPlane34
+    6400058: pPlane35
+    6400060: pPlane36
+    6400062: pPlane37
+    6400064: pPlane38
+    6400066: pPlane39
+    6400068: pPlane4
+    6400070: pPlane40
+    6400072: pPlane41
+    6400074: pPlane42
+    6400076: pPlane43
+    6400078: pPlane44
+    6400080: pPlane45
+    6400082: pPlane46
+    6400084: pPlane47
+    6400086: pPlane48
+    6400088: pPlane49
+    6400090: pPlane5
+    6400092: pPlane50
+    6400094: pPlane51
+    6400096: pPlane52
+    6400098: pPlane53
+    6400100: pPlane54
+    6400102: pPlane55
+    6400104: pPlane56
+    6400106: pPlane57
+    6400108: pPlane58
+    6400110: pPlane59
+    6400112: pPlane6
+    6400114: pPlane60
+    6400116: pPlane61
+    6400118: pPlane62
+    6400120: pPlane63
+    6400122: pPlane64
+    6400124: pPlane65
+    6400126: pPlane66
+    6400128: pPlane67
+    6400130: pPlane68
+    6400132: pPlane7
+    6400134: pPlane70
+    6400136: pPlane71
+    6400138: pPlane72
+    6400140: pPlane73
+    6400142: pPlane74
+    6400144: pPlane75
+    6400146: pPlane76
+    6400148: pPlane77
+    6400150: pPlane78
+    6400152: pPlane79
+    6400154: pPlane8
+    6400156: pPlane80
+    6400158: pPlane81
+    6400160: pPlane82
+    6400162: pPlane83
+    6400164: pPlane84
+    6400166: pPlane85
+    6400168: pPlane86
+    6400170: pPlane87
+    6400172: pPlane88
+    6400174: pPlane89
+    6400176: pPlane9
+    6400178: pPlane90
+    6400180: pPlane91
+    6400182: pPlane92
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -529,7 +621,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

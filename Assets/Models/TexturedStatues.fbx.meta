@@ -107,6 +107,26 @@ ModelImporter:
     4300034: pCube8
     4300036: pSphere9
     4300038: pSphere10
+    6400000: pCube1
+    6400002: pCube2
+    6400004: pCube3
+    6400006: pCube4
+    6400008: pCube5
+    6400010: pCube6
+    6400012: pCube7
+    6400014: pCube8
+    6400016: pSphere1
+    6400018: pSphere10
+    6400020: pSphere2
+    6400022: pSphere3
+    6400024: pSphere4
+    6400026: pSphere5
+    6400028: pSphere6
+    6400030: pSphere7
+    6400032: pSphere8
+    6400034: pSphere9
+    6400036: pTorus1
+    6400038: pTorus2
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -140,7 +160,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

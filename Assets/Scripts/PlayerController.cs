@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             UIManager.instance.ShowScreen("PauseMenu");
         }
 
-        if ((Input.GetKeyDown("space") || (Input.GetKeyDown("joystick button 0"))) && !CameraController.instance.menuUp)
+        if ((Input.GetKeyDown("space") || (Input.GetKeyDown("joystick button 1"))) && !CameraController.instance.menuUp)
         {
             Bark();
         }
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     void Bark()
     {
         playerSource.Play();
-        colliders = Physics.OverlapSphere(gameObject.transform.position, 100.0f);
+        colliders = Physics.OverlapSphere(gameObject.transform.position, 50.0f);
 
         foreach (Collider obj in colliders)
         {

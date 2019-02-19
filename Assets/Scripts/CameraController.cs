@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
 
     public float minY;
     public float maxY;
-    public bool menuUp = true;
+    public bool menuUp;
 
     Vector2 mouseLook;
     Vector2 smoothV;
@@ -26,6 +26,7 @@ public class CameraController : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
+        menuUp = true;
     }
 
     void Start()
