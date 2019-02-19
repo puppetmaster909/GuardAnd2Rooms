@@ -35,7 +35,6 @@ public class GuardAI : MonoBehaviour
     private string currentState = "Patrol";
     private bool hasDied;
     private bool soundPlayed = false;
-    private float soundTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()

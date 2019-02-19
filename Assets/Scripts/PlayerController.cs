@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             UIManager.instance.ShowScreen("PauseMenu");
         }
 
-        if (Input.GetKeyDown("space") || (Input.GetKeyDown("joystick button 0")))
+        if ((Input.GetKeyDown("space") || (Input.GetKeyDown("joystick button 0"))) && !CameraController.instance.menuUp)
         {
             Bark();
         }

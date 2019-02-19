@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour
+public class ControlsMenu : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,18 +16,8 @@ public class PauseMenu : MonoBehaviour
         
     }
 
-    public void Play()
+    public void Back()
     {
-        UIManager.instance.Play();
-    }
-
-    public void Restart()
-    {
-        UIManager.instance.Restart();
-    }
-
-    public void Controls()
-    {
-        UIManager.instance.Controls();
+        UIManager.instance.Back();
     }
 }

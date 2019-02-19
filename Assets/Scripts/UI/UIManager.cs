@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    public GameObject tempHUD;
+    private float HUDTimer = 0.0f;
+    private bool HUDBeenUp = true;
+
     [System.Serializable]
     public struct Screen
     {
@@ -71,9 +75,20 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        CameraController.instance.menuUp = false;
         screens[curScreen].screen.SetActive(false);
         BGMController.instance.BGM.Play();
+        CameraController.instance.menuUp = false;
+        HUDBeenUp = false;
+    }
+
+    public void Back()
+    {
+        ShowScreen("PauseMenu");
+    }
+
+    public void Controls()
+    {
+        ShowScreen("ControlsScreen");
     }
 
     // Start is called before the first frame update
@@ -85,6 +100,15 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!HUDBeenUp)
+        {
+            HUDTimer += Time.deltaTime;
+            if (HUDTimer >= 5.0f)
+            {
+                HUDTimer = 0.0f;
+                tempHUD.SetActive(false);
+                HUDBeenUp = true;
+            }
+        }
     }
 }
